@@ -2,21 +2,28 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative bg-gradient-to-br from-ramen-cream to-white py-20 px-4">
+    <section className="relative bg-gradient-to-br from-vendo-light to-white py-20 px-4">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-5xl md:text-6xl font-noto-kr font-semibold text-ramen-dark mb-6 animate-fade-in">
-          Bold Korean Flavors, Slurpy Ramen Bowls
-          <span className="block text-ramen-red mt-2">Ramen Yard</span>
+        <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-vendo-dark mb-6 animate-fade-in">
+          Quality Vendo Machines
+          <span className="block text-vendo-primary mt-2">Complete Business Solutions</span>
         </h1>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-slide-up">
-          Handcrafted broths, springy noodles, Korean street-food favorites.
+          Start your own profitable vending machine business with our complete packages. 
+          Hot & Cold drink machines, premium flavors, and full support included.
         </p>
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
           <a 
-            href="#ramen"
-            className="bg-ramen-red text-white px-8 py-3 rounded-full hover:bg-ramen-kimchi transition-all duration-300 transform hover:scale-105 font-medium"
+            href="#menu"
+            className="bg-vendo-primary text-white px-8 py-3 rounded-lg hover:bg-vendo-secondary transition-all duration-300 transform hover:scale-105 font-semibold shadow-lg"
           >
-            Explore Menu
+            View Packages
+          </a>
+          <a 
+            href="#contact"
+            className="bg-white text-vendo-primary px-8 py-3 rounded-lg border-2 border-vendo-primary hover:bg-vendo-light transition-all duration-300 font-semibold"
+          >
+            Get Quote
           </a>
         </div>
       </div>
