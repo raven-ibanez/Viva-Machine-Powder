@@ -19,6 +19,8 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack }) =>
   const [landmark, setLandmark] = useState('');
   const [pickupTime, setPickupTime] = useState('5-10');
   const [customTime, setCustomTime] = useState('');
+  // Preferred date/time for both pickup and delivery
+  const [preferredDateTime, setPreferredDateTime] = useState('');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('gcash');
   const [referenceNumber, setReferenceNumber] = useState('');
   const [notes, setNotes] = useState('');
@@ -54,6 +56,9 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack }) =>
 📍 Service: ${serviceType.charAt(0).toUpperCase() + serviceType.slice(1)}
 ${serviceType === 'delivery' ? `🏠 Address: ${address}${landmark ? `\n🗺️ Landmark: ${landmark}` : ''}` : ''}
 ${serviceType === 'pickup' ? `⏰ Pickup Time: ${timeInfo}` : ''}
+🗓️ Preferred Date & Time: ${preferredDateTime ? new Date(preferredDateTime).toLocaleString('en-US', { 
+  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' 
+}) : 'Not specified'}
 
 
 📋 ORDER DETAILS:
@@ -92,6 +97,7 @@ Please confirm this order to proceed. Thank you for choosing Viva Machine & Powd
   };
 
   const isDetailsValid = customerName && contactNumber && 
+    preferredDateTime &&
     (serviceType !== 'delivery' || address) && 
     (serviceType !== 'pickup' || (pickupTime !== 'custom' || customTime));
 
@@ -239,6 +245,19 @@ Please confirm this order to proceed. Thank you for choosing Viva Machine & Powd
                 </div>
               )}
 
+              {/* Preferred Date & Time (applies to both services) */}
+              <div>
+                <label className="block text-sm font-medium text-black mb-2">Preferred Date & Time *</label>
+                <input
+                  type="datetime-local"
+                  value={preferredDateTime}
+                  onChange={(e) => setPreferredDateTime(e.target.value)}
+                  className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                  required
+                />
+                <p className="text-xs text-gray-500 mt-1">We’ll target this schedule for your {serviceType === 'pickup' ? 'pickup' : 'delivery'}.</p>
+              </div>
+
               {/* Delivery Address */}
               {serviceType === 'delivery' && (
                 <>
@@ -332,10 +351,24 @@ Please confirm this order to proceed. Thank you for choosing Viva Machine & Powd
                 <span className="font-medium">{method.name}</span>
               </button>
             ))}
+
+            {/* Cash on Delivery (local option even if not in DB) */}
+            <button
+              type="button"
+              onClick={() => setPaymentMethod('cod')}
+              className={`p-4 rounded-lg border-2 transition-all duration-200 flex items-center space-x-3 ${
+                paymentMethod === 'cod'
+                  ? 'border-red-600 bg-red-600 text-white'
+                  : 'border-red-300 bg-white text-gray-700 hover:border-red-400'
+              }`}
+            >
+              <span className="text-2xl">💵</span>
+              <span className="font-medium">Cash on Delivery</span>
+            </button>
           </div>
 
           {/* Payment Details with QR Code */}
-          {selectedPaymentMethod && (
+          {selectedPaymentMethod && paymentMethod !== 'cod' && (
             <div className="bg-red-50 rounded-lg p-6 mb-6">
               <h3 className="font-medium text-black mb-4">Payment Details</h3>
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -360,13 +393,22 @@ Please confirm this order to proceed. Thank you for choosing Viva Machine & Powd
             </div>
           )}
 
-          {/* Reference Number */}
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-            <h4 className="font-medium text-black mb-2">📸 Payment Proof Required</h4>
-            <p className="text-sm text-gray-700">
-              After making your payment, please take a screenshot of your payment receipt and attach it when you send your order via Messenger. This helps us verify and process your order quickly.
-            </p>
-          </div>
+          {/* COD Notice or Reference Number Notice */}
+          {paymentMethod === 'cod' ? (
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h4 className="font-medium text-black mb-2">💵 Cash on Delivery</h4>
+              <p className="text-sm text-gray-700">
+                Pay in cash when your order is delivered. Please ensure someone is available at the preferred date and time to receive the order.
+              </p>
+            </div>
+          ) : (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <h4 className="font-medium text-black mb-2">📸 Payment Proof Required</h4>
+              <p className="text-sm text-gray-700">
+                After making your payment, please take a screenshot of your payment receipt and attach it when you send your order via Messenger. This helps us verify and process your order quickly.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Order Summary */}
@@ -390,6 +432,11 @@ Please confirm this order to proceed. Thank you for choosing Viva Machine & Powd
                   Pickup Time: {pickupTime === 'custom' ? customTime : `${pickupTime} minutes`}
                 </p>
               )}
+              <p className="text-sm text-gray-600">
+                Preferred Date & Time: {preferredDateTime ? new Date(preferredDateTime).toLocaleString('en-US', {
+                  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                }) : 'Not specified'}
+              </p>
             </div>
 
             {cartItems.map((item) => (
