@@ -108,34 +108,34 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
             </div>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-montserrat font-black text-transparent bg-clip-text bg-gradient-to-r from-vendo-dark via-vendo-primary to-vendo-secondary mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-black text-transparent bg-clip-text bg-gradient-to-r from-vendo-dark via-vendo-primary to-vendo-secondary mb-4 sm:mb-6 leading-tight px-4">
             Our Premium Products
           </h2>
           
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-vendo-accent to-transparent mx-auto mb-6"></div>
+          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-transparent via-vendo-accent to-transparent mx-auto mb-4 sm:mb-6"></div>
           
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4">
             Browse our complete vendo machine packages. Each package includes everything you need 
             to start your own profitable vending business - machines, flavors, cups, and full support.
           </p>
           
           {/* Feature highlights */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
-            <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-md border border-vendo-silver">
-              <span className="text-2xl">🚀</span>
-              <span className="text-sm font-semibold text-vendo-primary">Ready to Ship</span>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mt-6 sm:mt-8 px-4">
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-white px-2 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md border border-vendo-silver">
+              <span className="text-lg sm:text-2xl">🚀</span>
+              <span className="text-xs sm:text-sm font-semibold text-vendo-primary">Ready to Ship</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-md border border-vendo-silver">
-              <span className="text-2xl">⭐</span>
-              <span className="text-sm font-semibold text-vendo-primary">Quality Guaranteed</span>
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-white px-2 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md border border-vendo-silver">
+              <span className="text-lg sm:text-2xl">⭐</span>
+              <span className="text-xs sm:text-sm font-semibold text-vendo-primary">Quality Guaranteed</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-md border border-vendo-silver">
-              <span className="text-2xl">💼</span>
-              <span className="text-sm font-semibold text-vendo-primary">Business Ready</span>
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-white px-2 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md border border-vendo-silver">
+              <span className="text-lg sm:text-2xl">💼</span>
+              <span className="text-xs sm:text-sm font-semibold text-vendo-primary">Business Ready</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-md border border-vendo-silver">
-              <span className="text-2xl">🎁</span>
-              <span className="text-sm font-semibold text-vendo-primary">Complete Packages</span>
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-white px-2 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md border border-vendo-silver">
+              <span className="text-lg sm:text-2xl">🎁</span>
+              <span className="text-xs sm:text-sm font-semibold text-vendo-primary">Complete Packages</span>
             </div>
           </div>
         </div>
@@ -153,8 +153,8 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
               <div className="flex items-center justify-center mb-6">
                 <div className="flex items-center space-x-4">
                   <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-vendo-primary to-vendo-primary"></div>
-                  <h3 className="text-4xl font-montserrat font-bold text-vendo-dark flex items-center space-x-3">
-                    <span className="text-5xl">{category.icon}</span>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-vendo-dark flex items-center space-x-2 sm:space-x-3">
+                    <span className="text-3xl sm:text-4xl md:text-5xl">{category.icon}</span>
                     <span>{category.name}</span>
                   </h3>
                   <div className="h-0.5 w-12 bg-gradient-to-r from-vendo-primary via-vendo-primary to-transparent"></div>
@@ -167,7 +167,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {categoryItems.map((item) => {
                 const cartItem = cartItems.find(cartItem => cartItem.id === item.id);
                 return (

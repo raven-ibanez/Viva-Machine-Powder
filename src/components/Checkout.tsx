@@ -103,22 +103,22 @@ Please confirm this order to proceed. Thank you for choosing Viva Machine & Powd
 
   if (step === 'details') {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="flex items-center mb-8">
+      <div className="max-w-4xl mx-auto px-4 py-4 sm:py-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 sm:mb-8">
           <button
             onClick={onBack}
             className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors duration-200"
           >
             <ArrowLeft className="h-5 w-5" />
-            <span>Back to Cart</span>
+            <span className="text-sm sm:text-base">Back to Cart</span>
           </button>
-          <h1 className="text-3xl font-noto font-semibold text-black ml-8">Order Details</h1>
+          <h1 className="text-2xl sm:text-3xl font-noto font-semibold text-black sm:ml-8">Order Details</h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Order Summary */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-2xl font-noto font-medium text-black mb-6">Order Summary</h2>
+          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 order-2 lg:order-1">
+            <h2 className="text-xl sm:text-2xl font-noto font-medium text-black mb-4 sm:mb-6">Order Summary</h2>
             
             <div className="space-y-4 mb-6">
               {cartItems.map((item) => (
@@ -149,8 +149,8 @@ Please confirm this order to proceed. Thank you for choosing Viva Machine & Powd
           </div>
 
           {/* Customer Details Form */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-2xl font-noto font-medium text-black mb-6">Customer Information</h2>
+          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 order-1 lg:order-2">
+            <h2 className="text-xl sm:text-2xl font-noto font-medium text-black mb-4 sm:mb-6">Customer Information</h2>
             
             <form className="space-y-6">
               {/* Customer Information */}
@@ -318,22 +318,22 @@ Please confirm this order to proceed. Thank you for choosing Viva Machine & Powd
 
   // Payment Step
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex items-center mb-8">
+    <div className="max-w-4xl mx-auto px-4 py-4 sm:py-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 sm:mb-8">
         <button
           onClick={() => setStep('details')}
           className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors duration-200"
         >
           <ArrowLeft className="h-5 w-5" />
-          <span>Back to Details</span>
+          <span className="text-sm sm:text-base">Back to Details</span>
         </button>
-        <h1 className="text-3xl font-noto font-semibold text-black ml-8">Payment</h1>
+        <h1 className="text-2xl sm:text-3xl font-noto font-semibold text-black sm:ml-8">Payment</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Payment Method Selection */}
-        <div className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="text-2xl font-noto font-medium text-black mb-6">Choose Payment Method</h2>
+        <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+          <h2 className="text-xl sm:text-2xl font-noto font-medium text-black mb-4 sm:mb-6">Choose Payment Method</h2>
           
           <div className="grid grid-cols-1 gap-4 mb-6">
             {paymentMethods.map((method) => (

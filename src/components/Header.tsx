@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
                 }}
               />
             )}
-            <h1 className="text-2xl font-montserrat font-bold">
+            <h1 className="text-base sm:text-xl md:text-2xl font-montserrat font-bold truncate max-w-[200px] sm:max-w-none">
               {loading ? (
                 <div className="w-24 h-6 bg-gray-200 rounded animate-pulse" />
               ) : (

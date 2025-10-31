@@ -157,9 +157,9 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
         </div>
         
         {/* Content */}
-        <div className="p-6 bg-gradient-to-b from-white to-transparent">
-          <div className="flex items-start justify-between mb-4">
-            <h4 className="text-xl font-bold text-vendo-dark leading-tight flex-1 pr-2 group-hover:text-vendo-primary transition-colors">{item.name}</h4>
+        <div className="p-4 sm:p-6 bg-gradient-to-b from-white to-transparent">
+          <div className="flex items-start justify-between mb-3 sm:mb-4">
+            <h4 className="text-lg sm:text-xl font-bold text-vendo-dark leading-tight flex-1 pr-2 group-hover:text-vendo-primary transition-colors">{item.name}</h4>
             {item.variations && item.variations.length > 0 && (
               <div className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full whitespace-nowrap">
                 {item.variations.length} sizes
@@ -172,15 +172,15 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           </p>
           
           {/* Pricing Section */}
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4">
             <div className="flex-1">
               {item.isOnDiscount && item.discountPrice ? (
                 <div className="space-y-1">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-2xl font-bold text-vendo-accent">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xl sm:text-2xl font-bold text-vendo-accent">
                       ₱{item.discountPrice.toFixed(2)}
                     </span>
-                    <span className="text-sm text-gray-500 line-through">
+                    <span className="text-xs sm:text-sm text-gray-500 line-through">
                       ₱{item.basePrice.toFixed(2)}
                     </span>
                   </div>
@@ -189,7 +189,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                   </div>
                 </div>
               ) : (
-                <div className="text-3xl font-bold bg-gradient-to-r from-vendo-primary to-vendo-secondary bg-clip-text text-transparent">
+                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-vendo-primary to-vendo-secondary bg-clip-text text-transparent">
                   ₱{item.basePrice.toFixed(2)}
                 </div>
               )}
@@ -213,9 +213,9 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
               ) : quantity === 0 ? (
                 <button
                   onClick={handleAddToCart}
-                  className="bg-gradient-to-r from-vendo-primary to-vendo-secondary text-white px-7 py-3 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-110 hover:-translate-y-0.5 font-bold text-sm shadow-lg"
+                  className="w-full sm:w-auto bg-gradient-to-r from-vendo-primary to-vendo-secondary text-white px-4 sm:px-7 py-2.5 sm:py-3 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-110 hover:-translate-y-0.5 font-bold text-xs sm:text-sm shadow-lg"
                 >
-                  <span className="flex items-center space-x-1">
+                  <span className="flex items-center justify-center space-x-1">
                     {item.variations?.length || item.addOns?.length ? (
                       <>⚙️ <span>Customize</span></>
                     ) : (
@@ -255,22 +255,22 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
       {/* Product Detail Modal */}
       {showProductDetail && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between rounded-t-2xl z-10">
-              <h3 className="text-2xl font-bold text-vendo-dark">{item.name}</h3>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl m-2 sm:m-0">
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-4 sm:p-6 flex items-center justify-between rounded-t-2xl z-10">
+              <h3 className="text-lg sm:text-2xl font-bold text-vendo-dark pr-2 truncate flex-1">{item.name}</h3>
               <button
                 onClick={() => setShowProductDetail(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 flex-shrink-0"
               >
-                <X className="h-6 w-6 text-gray-500" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500" />
               </button>
             </div>
 
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {/* Large Image */}
-              <div className="mb-6">
-                <div className="relative h-96 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl overflow-hidden">
+              <div className="mb-4 sm:mb-6">
+                <div className="relative h-48 sm:h-64 md:h-96 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl overflow-hidden">
                   {item.image ? (
                     <img
                       src={item.image}
@@ -311,34 +311,34 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
               </div>
 
               {/* Product Information */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-700 mb-3">Product Description</h4>
-                  <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-700 mb-2 sm:mb-3">Product Description</h4>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line">
                     {item.description}
                   </p>
                 </div>
 
                 {/* Pricing and Add to Cart */}
-                <div className="bg-vendo-cream rounded-xl p-6">
+                <div className="bg-vendo-cream rounded-xl p-4 sm:p-6">
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2">Price</h4>
+                    <h4 className="text-xs sm:text-sm font-semibold text-gray-700 mb-2">Price</h4>
                     {item.isOnDiscount && item.discountPrice ? (
                       <div className="space-y-2">
-                        <div className="flex items-center space-x-3">
-                          <span className="text-4xl font-bold text-vendo-accent">
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                          <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-vendo-accent">
                             ₱{item.discountPrice.toFixed(2)}
                           </span>
-                          <span className="text-xl text-gray-500 line-through">
+                          <span className="text-lg sm:text-xl text-gray-500 line-through">
                             ₱{item.basePrice.toFixed(2)}
                           </span>
                         </div>
-                        <div className="text-sm text-gray-600 font-semibold">
+                        <div className="text-xs sm:text-sm text-gray-600 font-semibold">
                           You save ₱{(item.basePrice - item.discountPrice).toFixed(2)}
                         </div>
                       </div>
                     ) : (
-                      <div className="text-4xl font-bold text-vendo-primary">
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-vendo-primary">
                         ₱{item.basePrice.toFixed(2)}
                       </div>
                     )}
@@ -346,9 +346,9 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
                   <button
                     onClick={handleAddFromDetail}
-                    className="w-full bg-vendo-primary text-white py-4 rounded-lg hover:bg-vendo-secondary transition-all duration-200 font-semibold flex items-center justify-center space-x-2 shadow-md hover:shadow-lg transform hover:scale-105"
+                    className="w-full bg-vendo-primary text-white py-3 sm:py-4 rounded-lg hover:bg-vendo-secondary transition-all duration-200 font-semibold flex items-center justify-center space-x-2 shadow-md hover:shadow-lg transform hover:scale-105 text-sm sm:text-base"
                   >
-                    <ShoppingCart className="h-5 w-5" />
+                    <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
                     <span>Add to Cart</span>
                   </button>
                 </div>
